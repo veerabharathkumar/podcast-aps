@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, FlatList, SafeAreaView } from 'react-native';
 
-import HeaderSearch from './HeaderSearch';
+import HeaderSearch from '../../components/HeaderSearch';
 import Latest from './Latest';
 import Trending from './Trending';
 import Category from './Category';
@@ -18,8 +18,8 @@ export default Discover = (props) => {
                     <>
                         <HeaderSearch />
                         <Trending title={'Trending'} navigation={props.navigation} />
-                        <Latest />
-                        <Category />
+                        <Latest navigation={props.navigation}/>
+                        <Category navigation={props.navigation}/>
                         <View style={{ paddingTop: 18 }}>
                             <Trending
                                 title={'Top Hits'}

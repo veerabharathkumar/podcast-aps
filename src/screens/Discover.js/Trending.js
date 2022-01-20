@@ -1,18 +1,13 @@
 import React from 'react';
-import { View, Image, Text, FlatList ,TouchableOpacity} from 'react-native';
-import { banner } from '../../components/Icons';
+import { View, Text, FlatList } from 'react-native';
+
+import ShowItem from '../../components/ShowItem';
+import SeeAll from '../../components/SeeAll';
 
 export default Trending = ({ title = '', seeall = false, navigation }) => {
     const renderItem = () => {
         return (
-            <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('ShowDetails')}>
-                <Image source={banner} style={{ height: 150, width: 150 }} resizeMode='contain' />
-                <View style={{ paddingTop: 18 }}>
-                    <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 15, color: 'grey' }}>43 Episodes</Text>
-                    <Text style={{ fontFamily: 'Roboto-Bold', fontSize: 20, color: '#040708', paddingTop: 2 }}>Show Name</Text>
-                    <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 15, color: '#040708', paddingTop: 2 }}>Author Name</Text>
-                </View>
-            </TouchableOpacity>
+            <ShowItem onPress={() => navigation.navigate('ShowDetails')} />
         )
     }
     const ItemSeparator = () => {
@@ -20,15 +15,18 @@ export default Trending = ({ title = '', seeall = false, navigation }) => {
             <View style={{ paddingLeft: 10 }} />
         )
     }
+    const Header = () => {
+        return (
+            <View style={{ padding: 9 }} />
+        )
+    }
     return (
-        <View style={{ padding: 18, paddingRight: 0 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <View style={{ paddingVertical: 18 }}>
+            <View style={{ paddingHorizontal: 18, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{ fontFamily: 'Roboto-Bold', fontSize: 24, color: '#040708' }}>{title}</Text>
                 {
                     seeall && (
-                        <TouchableOpacity style={{ paddingRight: 18 }} onPress={() => navigation.navigate('SeeAll', { title: title })}>
-                            <Text style={{ fontFamily: 'Roboto-regular', fontSize: 16, color: '#040708' }}>See All</Text>
-                        </TouchableOpacity>
+                        <SeeAll onPress={() => navigation.navigate('Shows', { title: title })} />
                     )
                 }
             </View>
@@ -42,6 +40,8 @@ export default Trending = ({ title = '', seeall = false, navigation }) => {
                     ItemSeparatorComponent={ItemSeparator}
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={false}
+                    ListHeaderComponent={Header}
+                    ListFooterComponent={Header}
                 />
             </View>
         </View>

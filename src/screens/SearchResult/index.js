@@ -2,15 +2,16 @@ import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, Image, FlatList } from 'react-native';
 
 import { get } from "lodash";
-import { back, banner } from "../../components/Icons";
+import { banner } from "../../components/Icons";
+import HeaderSearch from '../../components/HeaderSearch';
 
 
-export default SeeAll = (props) => {
+export default SearchResult = (props) => {
     const { title } = get(props, 'route.params');
 
     const renderItem = () => {
         return (
-            <TouchableOpacity activeOpacity={1} onPress={() => props.navigation.navigate('SeeAllEpisodes', { title: title })}>
+            <TouchableOpacity activeOpacity={1} onPress={() => props.navigation.navigate('Episodes', { title: title })}>
                 <Image source={banner} style={{ height: 150, width: 150 }} resizeMode='contain' />
                 <View style={{ paddingTop: 12 }}>
                     <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 12, color: 'grey' }}>43 Episodes</Text>
@@ -27,14 +28,11 @@ export default SeeAll = (props) => {
     }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={{ position: 'relative' }}>
-                <View style={{ position: 'absolute', left: 18, top: 5, zIndex: 1 }}>
-                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }} onPress={() => props.navigation.goBack()}>
-                        <Image source={back} style={{ height: 15, width: 15 }} resizeMode='contain' />
-                        <Text style={{ fontFamily: 'Roboto-regular', fontSize: 14, color: '#040708' }}> Back</Text>
-                    </TouchableOpacity>
-                </View>
-                <Text style={{ fontFamily: 'Roboto-Bold', fontSize: 20, color: '#040708', textAlign: 'center' }}>{title}</Text>
+            <View style={{ paddingHorizontal: 10 }}>
+                <HeaderSearch />
+            </View>
+            <View style={{ paddingLeft: 30, paddingTop: 8 }}>
+                <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 18, color: '#040708' }}>Result for {title}</Text>
             </View>
             <View style={{ padding: 18 }}>
                 <FlatList

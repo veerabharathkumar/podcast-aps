@@ -2,7 +2,7 @@ import React from 'react';
 import { View, SafeAreaView, TouchableOpacity, Image, ScrollView, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { add, back, banner, progress, right_path, play, share, calendar, clock, sort } from '../../components/Icons';
+import { add, back, banner, progress, right_path, play, share, calendar, clock, sort } from '../../../components/Icons';
 
 export default ShowDetails = (props) => {
     return (
@@ -11,7 +11,7 @@ export default ShowDetails = (props) => {
                 <LinearGradient colors={['#e49a8c', '#a85643']} style={{ flex: 1, width: '100%', borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}>
                     <SafeAreaView style={{ flex: 1 }}>
                         <View style={{ position: 'relative' }}>
-                            <View style={{ position: 'absolute', left: 18, top: 5, zIndex: 1 }}>
+                            <View style={{ position: 'absolute', left: 18, top: 15, zIndex: 1 }}>
                                 <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }} onPress={() => props.navigation.goBack()}>
                                     <Image source={back} style={{ height: 15, width: 15, tintColor: 'white' }} resizeMode='contain' />
                                 </TouchableOpacity>

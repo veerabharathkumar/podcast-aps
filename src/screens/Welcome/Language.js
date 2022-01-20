@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
-import { logo_eng, logo_other, tick } from "../components/Icons";
+import { logo_eng, logo_other, tick } from "../../components/Icons";
 
 export default Language = () => {
     const [id, setId] = useState("");

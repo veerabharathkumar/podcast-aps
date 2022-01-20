@@ -2,7 +2,7 @@ import React from 'react';
 import { View, SafeAreaView, TouchableOpacity, Image, ScrollView, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { add, back, banner, progress, right_path, play, share, calendar, clock } from '../../components/Icons';
+import { add, back, banner, progress, right_path, play, share, calendar, clock } from '../../../components/Icons';
 
 export default EpisodeDetails = (props) => {
     return (
@@ -11,7 +11,7 @@ export default EpisodeDetails = (props) => {
                 <LinearGradient colors={['#e49a8c', '#cd8070']} style={{ flex: 1, height: 300, width: '100%' }}>
                     <SafeAreaView style={{ flex: 1 }}>
                         <View style={{ position: 'relative' }}>
-                            <View style={{ position: 'absolute', left: 18, top: 5, zIndex: 1 }}>
+                            <View style={{ position: 'absolute', left: 18, top: 15, zIndex: 1 }}>
                                 <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }} onPress={() => props.navigation.goBack()}>
                                     <Image source={back} style={{ height: 15, width: 15, tintColor: 'white' }} resizeMode='contain' />
                                 </TouchableOpacity>
@@ -65,7 +65,7 @@ export default EpisodeDetails = (props) => {
                         <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: 'black', paddingBottom: 16 }}>Show Details</Text>
                         <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 12, color: 'black' }}>Lorem ipsum dolor sit amet, consectetu
                             Laboris nisi ut aliquip ex ea commodo consequat</Text>
-                        <TouchableOpacity activeOpacity={1} style={{ paddingTop: 10, flexDirection: 'row', alignItems: 'baseline' }}>
+                        <TouchableOpacity activeOpacity={1} style={{ paddingTop: 10, flexDirection: 'row', alignItems: 'center' }}>
                             <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#0579b4', fontWeight: '500' }}>Go to Show </Text>
                             <Image source={right_path} style={{ height: 10, width: 10, tintColor: '#0579b4' }} resizeMode='contain' />
                         </TouchableOpacity>

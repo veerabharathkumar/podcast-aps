@@ -8,10 +8,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Welcome from './src/screens/Welcome';
 import Discover from './src/screens/Discover.js';
-import SeeAll from './src/screens/SeeAll.js';
-import SeeAllEpisodes from './src/screens/SeeAllEpisodes.js';
-import ShowDetails from './src/screens/ShowDetails.js';
-import EpisodeDetails from './src/screens/EpisodeDetails.js';
+
+import Shows from './src/screens/Shows/index';
+import ShowDetails from './src/screens/Shows/Details.js';
+import Episodes from './src/screens/Episodes/index';
+import EpisodeDetails from './src/screens/Episodes/Details.js';
+import Search from './src/screens/Search/index';
+import SearchResult from './src/screens/SearchResult/index';
+import MyLibrary from './src/screens/MyLibrary/index';
 
 import { library, discover, search } from './src/components/Icons';
 
@@ -33,11 +37,21 @@ const App = () => {
     return (
       <Discovers.Navigator screenOptions={{ headerShown: false }} >
         <Discovers.Screen name="Discover" component={Discover} />
-        <Discovers.Screen name="SeeAll" component={SeeAll} />
-        <Discovers.Screen name="SeeAllEpisodes" component={SeeAllEpisodes} />
+        <Discovers.Screen name="Shows" component={Shows} />
         <Discovers.Screen name="ShowDetails" component={ShowDetails} />
+        <Discovers.Screen name="Episodes" component={Episodes} />
         <Discovers.Screen name="EpisodeDetails" component={EpisodeDetails} />
       </Discovers.Navigator>
+    )
+  }
+  
+  const SearchScreen = createNativeStackNavigator();
+  function SearchStackScreen() {
+    return (
+      <SearchScreen.Navigator screenOptions={{ headerShown: false }} >
+        <Discovers.Screen name="Search" component={Search} />
+        <Discovers.Screen name="SearchResult" component={SearchResult} />
+      </SearchScreen.Navigator>
     )
   }
 
@@ -51,13 +65,13 @@ const App = () => {
               <Option image={discover} text={'Discover'} />
             )
           }} />
-        <Tab.Screen name="Search" component={Welcome}
+        <Tab.Screen name="Search" component={SearchStackScreen}
           options={{
             tabBarIcon: ({ focused }) => (
               <Option image={search} text={'Search'} />
             )
           }} />
-        <Tab.Screen name="More" component={Welcome}
+        <Tab.Screen name="More" component={MyLibrary}
           options={{
             tabBarIcon: ({ focused }) => (
               <Option image={library} text={'My Library'} />

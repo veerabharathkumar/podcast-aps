@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
-import Language from '../components/Language';
-import { right_path } from "../components/Icons";
+import Language from './Language';
+import { right_path } from "../../components/Icons";
 
 export default Welcome = (props) => {
     return (
