@@ -6,7 +6,6 @@ import SeeAll from '../../components/SeeAll';
 
 export default Trending = ({ title = '', seeall = false, navigation, data }) => {
     const renderItem = ({item}) => {
-        console.log(item);
         return (
             <ShowItem item={item} onPress={() => navigation.navigate('ShowDetails')} />
         )

@@ -10,7 +10,6 @@ export function fetchList() {
 }
 
 export function setFetchedData(data) {
-	console.log(data);
 	return dispatch => {
 		dispatch({
 			type: "SET_LIST",

@@ -1,18 +1,22 @@
+import { get } from 'lodash';
 import React from 'react';
 import { View, SafeAreaView, TouchableOpacity, Image, ScrollView, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { useSelector } from 'react-redux';
 
 import { add, back, banner, progress, right_path, play, share, calendar, clock } from '../../../components/Icons';
 
-export default EpisodeDetails = (props) => {
+export default EpisodeDetails = ({ navigation, route }) => {
+    const list = useSelector(state => state.list);
+    const showItem = get(list, 'data[0]');
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <ScrollView >
+            <ScrollView>
                 <LinearGradient colors={['#e49a8c', '#cd8070']} style={{ flex: 1, height: 300, width: '100%' }}>
                     <SafeAreaView style={{ flex: 1 }}>
                         <View style={{ position: 'relative' }}>
                             <View style={{ position: 'absolute', left: 18, top: 15, zIndex: 1 }}>
-                                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }} onPress={() => props.navigation.goBack()}>
+                                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }} onPress={() => navigation.goBack()}>
                                     <Image source={back} style={{ height: 15, width: 15, tintColor: 'white' }} resizeMode='contain' />
                                 </TouchableOpacity>
                             </View>
@@ -48,7 +52,6 @@ export default EpisodeDetails = (props) => {
                             <Image source={share} style={{ height: 15, width: 15, tintColor: '#000' }} resizeMode='contain' />
                         </View>
                     </View>
-
                 </View>
                 <View style={{ flex: 1, padding: 20 }}>
                     <View style={{ flexDirection: "row", alignItems: 'baseline', paddingTop: 5 }}>

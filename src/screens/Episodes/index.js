@@ -9,7 +9,7 @@ export default Episodes = (props) => {
 
     const renderItem = ({ item, index }) => {
         return (
-            <EpisodeItem index={index} onPress={()=>props.navigation.navigate('EpisodeDetails')} />
+            <EpisodeItem index={index} onPress={() => props.navigation.navigate('EpisodeDetails', {itemId: 86,otherParam: 'anything you want here'})} />
         )
     }
 
@@ -18,7 +18,7 @@ export default Episodes = (props) => {
             <View style={{ paddingTop: 18 }} />
         )
     }
-    
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             <View style={{ position: 'relative' }}>

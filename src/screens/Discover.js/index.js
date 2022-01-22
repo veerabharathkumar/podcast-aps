@@ -18,7 +18,6 @@ export default Discover = (props) => {
     useEffect(() => {
         axios.get('http://15.207.85.146/cms/feed.xml')
             .then(response => {
-                console.log(response);
                 var parseString = require('react-native-xml2js').parseString;
                 var xml = response.data;
                 const json = {};
@@ -30,7 +29,7 @@ export default Discover = (props) => {
                 }
 
                 var formatedData = [];
-                parseString(xml, function (err, result) {
+                parseString(xml.replace(/&(?!#)/g, "&amp;") ,{preserveWhitespace: true},function (err, result) {
                     let whole_list = result.rss.channel;
                     whole_list.forEach((element) => {
                         var newData = {
@@ -54,6 +53,8 @@ export default Discover = (props) => {
                                 type: get(elemen, 'enclosure[0].$.type', '').toString(),
                                 pubDate: elemen.pubDate.toString(),
                                 title: elemen.title.toString(),
+                                subtitle: elemen['itunes:subtitle'].toString(),
+                                author: elemen["itunes:author"].toString(),
                                 index: k
                             }
                             newData.item[k] = individualItem;
