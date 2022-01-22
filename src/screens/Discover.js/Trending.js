@@ -4,10 +4,11 @@ import { View, Text, FlatList } from 'react-native';
 import ShowItem from '../../components/ShowItem';
 import SeeAll from '../../components/SeeAll';
 
-export default Trending = ({ title = '', seeall = false, navigation }) => {
-    const renderItem = () => {
+export default Trending = ({ title = '', seeall = false, navigation, data }) => {
+    const renderItem = ({item}) => {
+        console.log(item);
         return (
-            <ShowItem onPress={() => navigation.navigate('ShowDetails')} />
+            <ShowItem item={item} onPress={() => navigation.navigate('ShowDetails')} />
         )
     }
     const ItemSeparator = () => {
@@ -32,7 +33,7 @@ export default Trending = ({ title = '', seeall = false, navigation }) => {
             </View>
             <View style={{ paddingTop: 18 }}>
                 <FlatList
-                    data={[11, 12, 13, 14, 15, 16, 17, 18, 19, 10]}
+                    data={data || []}
                     renderItem={renderItem}
                     nestedScrollEnabled={true}
                     keyExtractor={(item, index) => index}

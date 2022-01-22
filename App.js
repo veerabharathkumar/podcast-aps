@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Image, Text } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+import { Provider } from 'react-redux';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import Store from './src/components/Store';
 import Welcome from './src/screens/Welcome';
 import Discover from './src/screens/Discover.js';
 
@@ -22,6 +25,10 @@ import { library, discover, search } from './src/components/Icons';
 const App = () => {
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   const Option = ({ text, image }) => {
     return (
@@ -44,7 +51,7 @@ const App = () => {
       </Discovers.Navigator>
     )
   }
-  
+
   const SearchScreen = createNativeStackNavigator();
   function SearchStackScreen() {
     return (
@@ -84,14 +91,16 @@ const App = () => {
 
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }} >
-        <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="dashboard" component={DashboardNavigation} options={{ gestureEnabled: false }} />
-        {/* <Stack.Screen name="DashboardNavigation" component={DashboardNavigation} options={{ gestureEnabled: false }} />
+    <Provider store={Store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }} >
+          <Stack.Screen name="Welcome" component={Welcome} />
+          <Stack.Screen name="dashboard" component={DashboardNavigation} options={{ gestureEnabled: false }} />
+          {/* <Stack.Screen name="DashboardNavigation" component={DashboardNavigation} options={{ gestureEnabled: false }} />
         <Stack.Screen name="AuthScreen" component={AuthScreen} options={{ gestureEnabled: false }} /> */}
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
